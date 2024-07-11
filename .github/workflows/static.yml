@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPN GUI</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 80px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    select, input[type="text"], button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #connection-status {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="vpn_logo.png" alt="VPN Logo">
+    </div>
+
+    <div class="form-group">
+      <label for="server-location">Server Location</label>
+      <select id="server-location">
+        <option value="">Select a server location</option>
+        <option value="usa">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="canada">Canada</option>
+        <option value="australia">Australia</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your username">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" id="password" placeholder="Enter your password">
+    </div>
+
+    <button id="connect-button">Connect</button>
+
+    <div id="connection-status">Disconnected</div>
+  </div>
+
+  <script>
+    // JavaScript Functionality
+    const connectButton = document.getElementById('connect-button');
+    const connectionStatus = document.getElementById('connection-status');
+
+    connectButton.addEventListener('click', () => {
+      const serverLocation = document.getElementById('server-location').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (serverLocation && username && password) {
+        connectionStatus.textContent = 'Connecting...';
+
+        // Simulating a successful connection
+        setTimeout(() => {
+          connectionStatus.textContent = 'Connected';
+          connectButton.disabled = true;
+        }, 2000);
+      } else {
+        connectionStatus.textContent = 'Please fill in all the fields.';
+      }
+    });
+  </script>
+</body>
+</html>
